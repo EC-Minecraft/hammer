@@ -1,0 +1,6 @@
+{
+  "name": "ec-hammer",
+  "paths": ["components"],
+  "local": ["comment-box", "modpack"],
+  "scripts": ["index.js"]
+}

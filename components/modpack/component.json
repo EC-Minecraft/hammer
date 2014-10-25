@@ -1,0 +1,5 @@
+{
+  "name": "modpack",
+  "scripts": ["index.js"],
+  "react": ["commentBox.jsx"]
+}
