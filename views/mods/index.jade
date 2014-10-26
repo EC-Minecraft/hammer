@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  .row
+    .col-xs-12
+      #mods
+        | React Failure
+block scripts
+  script(type="text/javascript").
+    var modpack = require('./components/modpack');
+    React.renderComponent(modpack.FilterableModTable(null), $("#mods")[0]);
+
+

@@ -1,5 +1,5 @@
 var modPack = function() {};
 
-modPack.CommentBox = require("./commentBox.jsx");
+modPack.FilterableModTable = require("./commentBox.jsx");
 
 module.exports = modPack;

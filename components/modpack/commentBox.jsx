@@ -1,13 +1,21 @@
 /** @jsx React.DOM */
 
-var CommentBox = {};
+var SearchBar = require('./searchBar.jsx');
+var ModTable = require('./modTable.jsx');
 
-CommentBox.render = function() {
+var FilterableModTable = {};
+
+FilterableModTable.render = function() {
   return (
-    <div className="commentBox">
-      Hello, world! I am a CommentBox.
+    <div className="filterable-mod-table">
+      <div className="row">
+        <SearchBar />
+      </div>
+      <div className="row">
+        <ModTable />
+      </div>
     </div>
   );  
 };
 
-module.exports = React.createClass(CommentBox);
+module.exports = React.createClass(FilterableModTable);

@@ -1,5 +1,5 @@
 {
   "name": "modpack",
   "scripts": ["index.js"],
-  "react": ["commentBox.jsx"]
+  "react": ["commentBox.jsx", "searchBar.jsx", "modTable.jsx", "modTableHeaderRow.jsx", "modTableRow.jsx"]
 }

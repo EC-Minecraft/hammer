@@ -82,23 +82,122 @@ module.exports = function(string) {
 require.register("./components/modpack/commentBox.jsx", function (exports, module) {
 /** @jsx React.DOM */
 
-var CommentBox = {};
+var SearchBar = require('./components/modpack/searchBar.jsx');
+var ModTable = require('./components/modpack/modTable.jsx');
 
-CommentBox.render = function() {
+var FilterableModTable = {};
+
+FilterableModTable.render = function() {
   return (
-    React.DOM.div({className: "commentBox"}, 
-      "Hello, world! I am a CommentBox."
+    React.DOM.div({className: "filterable-mod-table"}, 
+      React.DOM.div({className: "row"}, 
+        SearchBar(null)
+      ), 
+      React.DOM.div({className: "row"}, 
+        ModTable(null)
+      )
     )
   );  
 };
 
-module.exports = React.createClass(CommentBox);
+module.exports = React.createClass(FilterableModTable);
+});
+
+require.register("./components/modpack/searchBar.jsx", function (exports, module) {
+/** @jsx React.DOM */
+
+var SearchBar = {};
+
+SearchBar.render = function() {
+  return (
+    React.DOM.div({className: "search-bar"}, 
+      "Search Bar"
+    )
+  );  
+};
+
+module.exports = React.createClass(SearchBar);
+});
+
+require.register("./components/modpack/modTable.jsx", function (exports, module) {
+/** @jsx React.DOM */
+
+var ModTableHeaderRow = require("./components/modpack/modTableHeaderRow.jsx");
+var ModTableRow = require("./components/modpack/modTableRow.jsx");
+
+var ModTable = {};
+
+ModTable.handleExpand = function(row) {
+  console.log("Row:", row, "wishes to expand");
+};
+
+ModTable.render = function() {
+  var rows = [
+    ModTableRow({id: 0, name: "Lorem Ipsum", author: "James Black", website: "http://google.com", onExpand: this.handleExpand}), 
+    ModTableRow({id: 1, name: "Lorem Upsum", author: "Felicia Black", onExpand: this.handleExpand})
+  ];
+
+  return (
+    React.DOM.table({className: "table table-striped"}, 
+      ModTableHeaderRow(null), 
+      rows
+    )
+  );  
+};
+
+module.exports = React.createClass(ModTable);
+});
+
+require.register("./components/modpack/modTableHeaderRow.jsx", function (exports, module) {
+/** @jsx React.DOM */
+
+var ModTableHeaderRow = {};
+
+ModTableHeaderRow.render = function() {
+  return (
+    React.DOM.tr(null, 
+      React.DOM.th(null, "#"), 
+      React.DOM.th(null, "Mod Name"), 
+      React.DOM.th(null, "Author"), 
+      React.DOM.th(null, "Website"), 
+      React.DOM.th(null, " ")
+    )
+  );  
+};
+
+module.exports = React.createClass(ModTableHeaderRow);
+});
+
+require.register("./components/modpack/modTableRow.jsx", function (exports, module) {
+/** @jsx React.DOM */
+
+var ModTableRow = {};
+
+ModTableRow.expand = function() {
+  if (this.props.onExpand) {
+    this.props.onExpand(this.getDOMNode());
+  }
+};
+
+ModTableRow.render = function() {
+  return (
+    React.DOM.tr({onClick: this.expand}, 
+      React.DOM.td(null, this.props.id), 
+      React.DOM.td(null, this.props.name), 
+      React.DOM.td(null, this.props.author), 
+      React.DOM.td(null, this.props.website), 
+      React.DOM.td(null, " ")
+    )
+  );  
+};
+
+module.exports = React.createClass(ModTableRow);
 });
 
 require.register("./components/modpack", function (exports, module) {
 var modPack = function() {};
 
-modPack.CommentBox = require("./components/modpack/commentBox.jsx");
+modPack.FilterableModTable = require("./components/modpack/commentBox.jsx");
 
 module.exports = modPack;
 });
