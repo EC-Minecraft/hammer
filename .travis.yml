@@ -1,0 +1,7 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZT44odf7f1dT1SU9n+dFeROz27cOQ+N1k3yB5dIgtWdeM/h6Af3LeqJw+QwqwyV4+sZ8H8H2Kry9wzuHK2wN/LhqMfRJ+feemvqZH+qvEBJsCgbcxsOncV0k0GGbTOLmJLv/w2yPESxmCmWBkEoknuRxTNfUwnwcbT5mOjuP42k=
+  app: ec-minecraft-hammer
+  on:
+    repo: EC-Minecraft/hammer
