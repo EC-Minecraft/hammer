@@ -1,3 +1,7 @@
+language: node_js
+node_js:
+- '0.11'
+- '0.10'
 deploy:
   provider: heroku
   api_key:
@@ -5,3 +9,4 @@ deploy:
   app: ec-minecraft-hammer
   on:
     repo: EC-Minecraft/hammer
+
